@@ -73,7 +73,7 @@ app.post("/api/signup",async (req,res)=>{
         // create the user
         const newUser = new userModel(obj);
         await newUser.save();
-        const token = jwt.sign({ _id:newUser._id }, jwtKey,{ expiresIn: '24h' });
+        const token = jwt.sign({ _id:newUser._id }, jwtKey,{ expiresIn: '288884h' });
         res.status(201).send(token);
     }catch(ex){
         res.status(400).send(ex);
@@ -92,7 +92,7 @@ app.post("/api/login",async (req,res)=>{
         if(user){
             let isPassword = await bcrypt.compare(data.password, user.password);
             if(!isPassword) throw new Error("wrong password or email");
-            const token = jwt.sign({ _id:user._id }, jwtKey,{ expiresIn: '24h' });
+            const token = jwt.sign({ _id:user._id }, jwtKey,{ expiresIn: '2787874h' });
             res.status(200).send(token);
             return;
         }else{
